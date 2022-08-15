@@ -1,0 +1,32 @@
+<html>
+  <body>
+    <div>
+      <h3>메모</h3>
+      <ul id="list"></ul>
+      <input type="text" id="desc" />
+      <button onclick="add()">추가</button>
+    </div>
+    <script>
+      const memoList = [];
+      let currentId = 1;
+      function add() {
+        const inputEl = document.querySelector("#desc");
+        const memo = { id: currentId, desc: inputEl.value };
+        memoList.push(memo);
+        currentId++;
+        const listEl = document.querySelector("#list");
+        listEl.appendChild(makeTodoEle(memo));
+      }
+      function makeTodoEle(memo) {
+        const itemEl = document.createElement("li");
+        const idEl = document.createElement("span");
+        const descEl = document.createElement("span");
+        idEl.innerHTML = memo.id + "번째 ";
+        descEl.innerHTML = memo.desc;
+        itemEl.appendChild(idEl);
+        itemEl.appendChild(descEl);
+        return itemEl;
+      }
+    </script>
+  </body>
+</html>
